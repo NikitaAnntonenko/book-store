@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: bookstore_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: bookstore_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_store:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # importer:
+  #  build: ./importer
+  #  container_name: books_importer
+  #  depends_on:
+  #    - postgres
+  #  environment:
+  #    POSTGRES_USER: postgres
+  #    POSTGRES_PASSWORD: password
+  #    POSTGRES_HOST: postgres
+  #    POSTGRES_PORT: 5432
+  #    POSTGRES_DB: bookstore_db
+  #  restart: "no"
+
+volumes:
+  postgres_store:
