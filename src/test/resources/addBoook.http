@@ -1,0 +1,15 @@
+POST http://localhost:8081/api/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJOaWtpdGEgQW50b25lbmtvIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzQ1NTcxMjgxLCJleHAiOjE3NDU1NzQ4ODF9.gKCHO_fgZOyt7Xe2F7m1AzEa1r4EAleMf5c-mOGzsEs
+
+{
+  "title": "Test2",
+  "author": "Test2",
+  "isbn": "123",
+  "price": 12,
+  "stockQuantity": 4,
+  "imageUrl": "https://www.ucpress.edu/_next/image?url=https%3A%2F%2Fwebfiles.ucpress.edu%2Fcoverimage%2Fisbn13%2F9780520400610.jpg&w=640&q=90",
+  "description": "Test2"
+}
+
+###

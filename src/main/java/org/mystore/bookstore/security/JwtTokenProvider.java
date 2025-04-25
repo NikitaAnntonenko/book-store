@@ -4,12 +4,16 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
+import org.mystore.bookstore.entity.User;
+import org.mystore.bookstore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
 @Component
+@RequiredArgsConstructor
 public class JwtTokenProvider {
 
     @Value("${jwt.secret}")
@@ -18,13 +22,17 @@ public class JwtTokenProvider {
     @Value("${jwt.expiration}")
     private long validityInMillis;
 
+    private final UserRepository userRepository;
+
     // Створення токена
     public String createToken(String username) {
+        User user = userRepository.findByUsername(username).orElseThrow();
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMillis);
 
         return Jwts.builder()
                 .setSubject(username)
+                .claim("role", user.getRole())
                 .setIssuedAt(now)
                 .setExpiration(validity)
                 .signWith(SignatureAlgorithm.HS256, secretKey)

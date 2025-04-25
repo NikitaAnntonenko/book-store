@@ -38,3 +38,7 @@ export const googleLogin = async (googleToken) => {
     }
     return response.data;
 };
+
+export const getUserRole = () => {
+    return localStorage.getItem('role');
+};
