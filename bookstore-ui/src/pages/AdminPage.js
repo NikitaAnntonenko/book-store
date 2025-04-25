@@ -23,15 +23,17 @@ const AdminPage = () => {
 
     const isAdmin = getUserRole() === 'ADMIN';
 
-    useEffect(() => {
-        loadBooks();
-    }, [page, rowsPerPage, sortField, sortDirection]);
-
     const loadBooks = async () => {
         const data = await getBooks(search, sortField, sortDirection, page, rowsPerPage);
         setBooks(data.content);
         setTotalElements(data.totalElements);
     };
+
+    useEffect(() => {
+        loadBooks();
+    }, [page, rowsPerPage, sortField, sortDirection]);
+
+
 
     const handleSort = (field) => {
         const isAsc = sortField === field && sortDirection === 'asc';

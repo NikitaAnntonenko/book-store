@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { jwtDecode } from "jwt-decode";
 
 const API_URL = 'http://localhost:8081/api/auth/';
 
@@ -40,5 +41,14 @@ export const googleLogin = async (googleToken) => {
 };
 
 export const getUserRole = () => {
-    return localStorage.getItem('role');
+    const token = localStorage.getItem('jwt');
+    if (!token) return null;
+
+    try {
+        const decoded = jwtDecode(token);
+        return decoded.role || null;
+    } catch (error) {
+        console.error('Invalid JWT Token', error);
+        return null;
+    }
 };
