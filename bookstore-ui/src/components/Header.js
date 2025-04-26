@@ -18,14 +18,14 @@ const Header = () => {
                 <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
                     <Link to="/" style={{color: '#fff', textDecoration: 'none'}}>Book Shop</Link>
                 </Typography>
-                <Button color="inherit" onClick={() => navigate('/catalog')}>Catalog</Button>
+                <Button color="inherit" onClick={() => navigate('/catalog')}>Каталог</Button>
                 {isAuthenticated() && (
                     <>
-                    {isAdmin && (<Button color="inherit" onClick={() => navigate('/admin')}>Admin Panel</Button>)}
+                    {isAdmin && (<Button color="inherit" onClick={() => navigate('/admin')}>Панель адміністратора</Button>)}
                         <Button color="inherit" onClick={() => {
                             logout();
                             window.location.href = '/login';
-                        }}>Logout</Button>
+                        }}>Вийти</Button>
 
                     {!isAdmin && (<IconButton color="inherit" onClick={() => navigate('/cart')}>
                             <Badge badgeContent={totalQuantity} color="secondary">
@@ -35,7 +35,7 @@ const Header = () => {
                     </>
                 )}
                 {!isAuthenticated() && (
-                    <Button color="inherit" onClick={() => navigate('/login')}>Login</Button>
+                    <Button color="inherit" onClick={() => navigate('/login')}>Увійти</Button>
                 )}
             </Toolbar>
         </AppBar>

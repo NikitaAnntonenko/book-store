@@ -27,7 +27,7 @@ const LoginPage = () => {
 
     return (
         <Box sx={{ maxWidth: 400, mx: 'auto', mt: 5 }}>
-            <Typography variant="h5" gutterBottom>Login to Book Shop</Typography>
+            <Typography variant="h5" gutterBottom>Увійти до Book Shop</Typography>
             {error && <Alert severity="error">{error}</Alert>}
             <TextField
                 label="Username"
@@ -38,7 +38,7 @@ const LoginPage = () => {
                 onChange={(e) => setUsername(e.target.value)}
             />
             <TextField
-                label="Password"
+                label="Пароль"
                 type="password"
                 variant="outlined"
                 fullWidth
@@ -47,13 +47,13 @@ const LoginPage = () => {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <Button variant="contained" color="primary" fullWidth sx={{ mt: 2 }} onClick={handleLogin}>
-                Login
+                Увійти
             </Button>
             <Box sx={{ mt: 2 }}>
-                <Link href="/register">Don't have an account? Register</Link>
+                <Link onClick={() => navigate('/register')}>Не маєш акаунту? Зареєструватись</Link>
             </Box>
 
-            <Divider sx={{ my: 3 }}>OR</Divider>
+            <Divider sx={{ my: 3 }}>АБО</Divider>
 
             <GoogleLogin
                 onSuccess={handleGoogleSuccess}
