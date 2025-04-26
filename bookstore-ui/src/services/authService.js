@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { jwtDecode } from "jwt-decode";
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8081/api/auth';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8081/api';
 
 export const register = async (username, email, password) => {
-    const response = await axios.post(API_URL + '/register', {
+    const response = await axios.post(API_URL + '/auth/register', {
         username,
         email,
         password
@@ -13,7 +13,7 @@ export const register = async (username, email, password) => {
 };
 
 export const login = async (username, password) => {
-    const response = await axios.post(API_URL + '/login', { username, password });
+    const response = await axios.post(API_URL + '/auth/login', { username, password });
     if (response.data.token) {
         localStorage.setItem('jwt', response.data.token);
     }
