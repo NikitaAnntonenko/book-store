@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const GOOGLE_CLIENT_ID = "948826907284-if1f4let8kc83ok04qhlcvktc14uct32.apps.googleusercontent.com"
 

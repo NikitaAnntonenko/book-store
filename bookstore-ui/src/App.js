@@ -16,7 +16,7 @@ function App() {
         <CartProvider>
             <Router>
                 <Header />
-                <Container sx={{mt: 4}}>
+                <Container maxWidth={false} sx={{mt: 4}}>
                     <Routes>
                         <Route path="/" element={<HomePage/>}/>
                         <Route path="/catalog" element={<CatalogPage/>}/>
