@@ -33,7 +33,7 @@ export const isAuthenticated = () => {
 };
 
 export const googleLogin = async (googleToken) => {
-    const response = await axios.post(API_URL + 'google', { token: googleToken });
+    const response = await axios.post(API_URL + '/google', { token: googleToken });
     if (response.data.token) {
         localStorage.setItem('jwt', response.data.token);
     }
