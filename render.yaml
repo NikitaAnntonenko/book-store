@@ -1,0 +1,36 @@
+databases:
+  - name: bookshop-db
+    databaseName: bookshop
+    user: bookuser
+    plan: free
+
+services:
+  - type: web
+    name: bookshop-backend
+    env: docker
+    rootDir: .
+    plan: free
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: bookshop-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: bookshop-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: bookshop-db
+          property: password
+
+  - type: web
+    name: bookshop-frontend
+    env: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    plan: free
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://bookshop-backend.onrender.com/api
